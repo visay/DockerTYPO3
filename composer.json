@@ -1,0 +1,19 @@
+{
+  "name": "visay/dockertypo3",
+  "description": "Docker Compose structure to quickly startup TYPO3 CMS projects",
+  "license": "MIT",
+  "require": {
+    "typo3/cms": "*"
+  },
+  "authors": [
+    {
+      "name": "Visay Keo",
+      "email": "visay.keo@typo3.org",
+      "homepage": "http://www.visay.info",
+      "role": "Developer"
+    }
+  ],
+  "bin": [
+    "bin/dockertypo3"
+  ]
+}
