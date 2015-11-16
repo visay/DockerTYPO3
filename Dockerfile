@@ -10,6 +10,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     php5-cli \
     php5-mysql \
     php5-gd \
+    imagemagick \
+    ghostscript \
     php5-imagick \
     sqlite \
     php5-sqlite \
@@ -17,6 +19,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     php5-redis \
     php5-ldap \
     php5-xdebug \
+    php-apc \
+    openssl \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Set workdir to project root
