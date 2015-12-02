@@ -26,14 +26,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Set workdir to project root
 WORKDIR /var/www
 
-# Copy configuration files for php
-COPY Configuration/App/php.ini      /etc/php5/fpm/
-COPY Configuration/App/php-cli.ini  /etc/php5/cli/
-COPY Configuration/App/php-fpm.conf /etc/php5/fpm/
-COPY Configuration/App/www.conf     /etc/php5/fpm/pool.d/
+# Copy config files for php
+COPY config/app/php.ini      /etc/php5/fpm/
+COPY config/app/php-cli.ini  /etc/php5/cli/
+COPY config/app/php-fpm.conf /etc/php5/fpm/
+COPY config/app/www.conf     /etc/php5/fpm/pool.d/
 
 # Entry point script which wraps all commands for app container
-COPY Scripts/EntryPoint/app.sh /entrypoint.sh
+COPY scripts/entrypoint/app.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
 # By default start php-fpm

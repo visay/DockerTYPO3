@@ -5,8 +5,8 @@ command -v docker >/dev/null 2>&1 || { echo "docker is not installed. Aborting."
 command -v docker-compose >/dev/null 2>&1 || { echo "docker-compose is not installed. Aborting." >&2; exit 1; }
 
 dirname=`pwd`
-package_dir="Packages/Libraries/visay/dockertypo3"
-config_dir="${package_dir}/Configuration"
+package_dir="vendor/visay/dockertypo3"
+config_dir="${package_dir}/config"
 
 action=$1
 
@@ -28,21 +28,21 @@ DOCKER_TYPO3_PORT=8080
 DOCKER_TYPO3_CONTEXT=${TYPO3_CONTEXT:=Development}
 
 # Replace the markers in the merge config file
-sed -e "s/DOCKER_TYPO3_SERVERNAME/${DOCKER_TYPO3_SERVERNAME}/g;s/DOCKER_TYPO3_CONTEXT/${DOCKER_TYPO3_CONTEXT}/g" ${config_dir}/Web/nginx_vhost.conf > ${config_dir}/Web/nginx_vhost_merged.conf
-sed -e "s/DOCKER_TYPO3_SERVERNAME/test.${DOCKER_TYPO3_SERVERNAME}/g;s/DOCKER_TYPO3_CONTEXT/${DOCKER_TYPO3_CONTEXT}\/Testing/g" ${config_dir}/Web/nginx_vhost.conf >> ${config_dir}/Web/nginx_vhost_merged.conf
+sed -e "s/DOCKER_TYPO3_SERVERNAME/${DOCKER_TYPO3_SERVERNAME}/g;s/DOCKER_TYPO3_CONTEXT/${DOCKER_TYPO3_CONTEXT}/g" ${config_dir}/web/nginx_vhost.conf > ${config_dir}/web/nginx_vhost_merged.conf
+sed -e "s/DOCKER_TYPO3_SERVERNAME/test.${DOCKER_TYPO3_SERVERNAME}/g;s/DOCKER_TYPO3_CONTEXT/${DOCKER_TYPO3_CONTEXT}\/Testing/g" ${config_dir}/web/nginx_vhost.conf >> ${config_dir}/web/nginx_vhost_merged.conf
 
 # Make sure all entrypoint scripts are executable
-chmod +x ${package_dir}/Scripts/EntryPoint/*.sh
+chmod +x ${package_dir}/scripts/entrypoint/*.sh
 
 # Create placeholder for storing web ip
-touch ${config_dir}/Web/ip_address.txt
+touch ${config_dir}/web/ip_address.txt
 
 echo "####"
 echo "### Project name    : ${projectname}"
 echo "### TYPO3_CONTEXT   : ${DOCKER_TYPO3_CONTEXT}"
 echo "### Testing context : ${DOCKER_TYPO3_CONTEXT}/Testing"
 echo "###"
-echo "### Dockertypo3 is now running action '${action}'"
+echo "### DockerTYPO3 is now running action '${action}'"
 echo "####"
 
 # Wrap docker-compose command to use config from package, passing TYPO3 context on run action
