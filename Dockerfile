@@ -3,6 +3,12 @@ FROM ubuntu:14.04
 
 MAINTAINER Visay Keo <visay.keo@typo3.org>
 
+# Set the locale
+RUN locale-gen en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
+
 # Install packages as per recommendation (https://docs.docker.com/articles/dockerfile_best-practices/)
 # And clean up APT
 RUN apt-get update && apt-get install -y --no-install-recommends \
