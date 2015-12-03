@@ -31,7 +31,7 @@ Add `visay/dockertypo3` as dev dependency in your composer, using the latest sta
 *Example*:
 
 ```
-composer require --dev shel/dockertypo3 dev-master
+composer require --dev visay/dockertypo3 dev-master
 ```
 
 ## Run dockertypo3

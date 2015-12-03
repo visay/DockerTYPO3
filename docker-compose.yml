@@ -1,8 +1,8 @@
 # App container which provides the php environment
 app:
   # For development of the image comment out the 'image' line and replace with the next line
-  build: .
-  #image: visay/dockertypo3:latest
+  #build: .
+  image: visay/dockertypo3:1.0.0
   hostname: dockertypo3
   domainname: dev
   volumes_from:
