@@ -1,7 +1,22 @@
 CHANGELOG
 =========
 
-1.0.0-dev
----------
+1.0-dev
+-------
 
+  -
+
+1.0.1
+-----
+
+  - [TASK] Use image instead of local build
+  - [TASK] Enable apc cli
+
+1.0.0
+-----
+
+  - [TASK]    Generate locale setting for container
+  - [TASK]    Adjust for TYPO3 7.6
+  - [TASK]    Use image from dockerhub in compose config
+  - [FEATURE] Add config for php optimization
   - [TASK]    Initial commit
