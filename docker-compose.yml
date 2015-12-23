@@ -2,7 +2,7 @@
 app:
   # For development of the image comment out the 'image' line and replace with the next line
   #build: .
-  image: visay/dockertypo3:latest
+  image: visay/dockertypo3:1.0.2
   hostname: dockertypo3
   domainname: dev
   volumes_from:

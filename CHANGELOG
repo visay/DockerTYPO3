@@ -1,10 +1,10 @@
 CHANGELOG
 =========
 
-1.0-dev
--------
+1.0.2
+-----
 
-  -
+  - [IMP] Make one-off docker run container after exit
 
 1.0.1
 -----
