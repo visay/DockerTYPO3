@@ -38,8 +38,9 @@ composer require --dev visay/dockertypo3 dev-master
 
     vendor/bin/dockertypo3 up -d
 
-The command will echo the url with which you can access your project.
-Add the hostname then to your `/etc/hosts` and set the ip to your docker host (default for linux is 0.0.0.0).
+The command will echo the url with which you can access your project. Add the hostname then to your `/etc/hosts`
+and set the ip to your docker host (default for linux is 0.0.0.0). You can also use any subdomain with *.hostname and
+it will point to the same server. What you need to do is to add exact subdomain name to your `/etc/hosts`.
 The parameter `-d` will keep it running in the background until you run:
 
     vendor/bin/dockertypo3 stop

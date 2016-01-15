@@ -28,8 +28,8 @@ DOCKER_TYPO3_PORT=8080
 DOCKER_TYPO3_CONTEXT=${TYPO3_CONTEXT:=Development}
 
 # Replace the markers in the merge config file
-sed -e "s/DOCKER_TYPO3_SERVERNAME/${DOCKER_TYPO3_SERVERNAME}/g;s/DOCKER_TYPO3_CONTEXT/${DOCKER_TYPO3_CONTEXT}/g" ${config_dir}/web/nginx_vhost.conf > ${config_dir}/web/nginx_vhost_merged.conf
-sed -e "s/DOCKER_TYPO3_SERVERNAME/test.${DOCKER_TYPO3_SERVERNAME}/g;s/DOCKER_TYPO3_CONTEXT/${DOCKER_TYPO3_CONTEXT}\/Testing/g" ${config_dir}/web/nginx_vhost.conf >> ${config_dir}/web/nginx_vhost_merged.conf
+sed -e "s/DOCKER_TYPO3_SERVERNAME/test.${DOCKER_TYPO3_SERVERNAME}/g;s/DOCKER_TYPO3_CONTEXT/${DOCKER_TYPO3_CONTEXT}\/Testing/g" ${config_dir}/web/nginx_vhost.conf > ${config_dir}/web/nginx_vhost_merged.conf
+sed -e "s/DOCKER_TYPO3_SERVERNAME/${DOCKER_TYPO3_SERVERNAME} *.${DOCKER_TYPO3_SERVERNAME}/g;s/DOCKER_TYPO3_CONTEXT/${DOCKER_TYPO3_CONTEXT}/g" ${config_dir}/web/nginx_vhost.conf >> ${config_dir}/web/nginx_vhost_merged.conf
 
 # Make sure all entrypoint scripts are executable
 chmod +x ${package_dir}/scripts/entrypoint/*.sh
