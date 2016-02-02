@@ -21,6 +21,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     php5-imagick \
     sqlite \
     php5-sqlite \
+    curl \
     php5-curl \
     php5-redis \
     php5-ldap \
