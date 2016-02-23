@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+2.0.0
+-----
+
+  - [TASK] Use port 80 for web instead of 8080
+
 1.0.4
 -----
 

@@ -34,6 +34,16 @@ Add `visay/dockertypo3` as dev dependency in your composer, using the latest sta
 composer require --dev visay/dockertypo3 dev-master
 ```
 
+*Note*:
+
+DockerTYPO3 uses port 80 for web access so you need to make sure that your host machine does not have any software
+using that port. Usually this happens if you have apache or nginx installed in your host machine, so you can stop it with:
+
+```
+sudo service apache2 stop
+sudo service nginx stop
+```
+
 ## Run dockertypo3
 
     vendor/bin/dockertypo3 up -d
@@ -117,7 +127,7 @@ WEB_CONTAINER_IP    project-url
 WEB_CONTAINER_IP    test.project-url
 ```
 
-You need to define the default test suite url in your `behat.yml` to use `http://test.project-url:8080` and then you can
+You need to define the default test suite url in your `behat.yml` to use `http://test.project-url` and then you can
 run the behat tests without having to connect external selenium server
 
 ```

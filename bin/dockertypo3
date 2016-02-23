@@ -21,9 +21,6 @@ wrapped_command="docker-compose -p \"${projectname}\" -f ${package_dir}/docker-c
 # Use the projects folder name as servername
 DOCKER_TYPO3_SERVERNAME=${projectname}
 
-# Default port for dockertypo3
-DOCKER_TYPO3_PORT=8080
-
 # Use Development context if Flow Context is not set
 DOCKER_TYPO3_CONTEXT=${TYPO3_CONTEXT:=Development}
 
@@ -58,9 +55,8 @@ if [ "$action" = "up" ]; then
 	${wrapped_command} run --rm app /entrypoint.sh
 
 	# Print information about running app container
-	used_port=`${wrapped_command} port web ${DOCKER_TYPO3_PORT} | sed 's/^.*\:\([0-9]*\).*$/\1/g'`
 	echo "####"
-	echo "### Done! Your app is running here  : ${projectname}:${used_port}"
-	echo "### Testing context is running here : test.${projectname}:${used_port}"
+	echo "### Done! Your app is running here  : http://${projectname}/"
+	echo "### Testing context is running here : http://test.${projectname}/"
 	echo "####"
 fi
