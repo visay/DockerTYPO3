@@ -2,7 +2,7 @@
 app:
   # For development of the image comment out the 'image' line and replace with the next line
   #build: .
-  image: visay/dockertypo3:2.0.0
+  image: visay/dockertypo3:typo3-6.2
   hostname: dockertypo3
   domainname: dev
   volumes_from:
@@ -24,7 +24,7 @@ data:
   image: mariadb:10.0
   command: echo "Data container has started"
   volumes:
-    - ../../..:/var/www
+    - ../../../..:/var/www
     - /var/lib/mysql
 
 db:

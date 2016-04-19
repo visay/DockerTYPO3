@@ -25,6 +25,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     php5-curl \
     php5-redis \
     php5-ldap \
+    php5-intl \
     php5-xdebug \
     php-apc \
     openssl \

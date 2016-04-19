@@ -1,9 +1,9 @@
 {
   "name": "visay/dockertypo3",
-  "description": "Docker Compose structure to quickly startup TYPO3 CMS projects",
+  "description": "Docker Compose structure to quickly startup TYPO3 CMS 6.2 projects",
   "license": "MIT",
   "require": {
-    "typo3/cms": "*"
+    "typo3/cms": "~6.2"
   },
   "authors": [
     {
