@@ -1,2 +1,3 @@
-/config/web/nginx_vhost_merged.conf
+/config/web/.nginx_default_merged.conf
+/config/web/.nginx_default_test_merged.conf
 /config/web/ip_address.txt
