@@ -45,9 +45,17 @@ web:
   image: nginx:1.7
   ports:
     - "80:80"
+    - "443:443"
   volumes:
     - ./config/web/nginx.conf:/etc/nginx/nginx.conf:ro
-    - ./config/web/nginx_vhost_merged.conf:/etc/nginx/conf.d/default.conf:ro
+    - ./config/web/.nginx_default_merged.conf:/etc/nginx/default/vhost.conf:ro
+    - ./config/web/.nginx_default_test_merged.conf:/etc/nginx/default/vhost_test.conf:ro
+    - ./config/web/nginx_ssl.conf:/etc/nginx/default/vhost_ssl.conf:ro
+    - ./config/web/nginx_vhost_default.conf:/etc/nginx/conf.d/default.conf:ro
+    - ./config/web/nginx_vhost_ssl.conf:/etc/nginx/conf.d/default_ssl.conf:ro
+    - ./config/web/ssl/dockertypo3.crt:/etc/ssl/certs/dockertypo3.crt:ro
+    - ./config/web/ssl/dockertypo3.key:/etc/ssl/private/dockertypo3.key:ro
+    - ./config/web/ssl/dhparam.pem:/etc/nginx/ssl/dhparam.pem:ro
     - ./config/web/ip_address.txt:/ip_address.txt:rw
     - ./scripts/entrypoint/web.sh:/entrypoint.sh:ro
   volumes_from:
