@@ -4,6 +4,7 @@ CHANGELOG
 typo3-6.2
 ---------
 
+  - [!!!TASK] Fatal error: "Security" how to run mysqld as root!
   - [TASK] Adjust for TYPO3 6.2
 
 2.0.0
