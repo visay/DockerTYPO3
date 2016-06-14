@@ -4,7 +4,7 @@ CHANGELOG
 2.0.3
 -----
 
-  - [!!!TASK] Fatal error: "Security" how to run mysqld as root!
+  - [IMP] Fatal error: "Security" how to run mysqld as root!
 
 2.0.2
 -----
