@@ -4,6 +4,7 @@ CHANGELOG
 typo3-6.2
 ---------
 
+  - [TASK] Support for mac docker with volume ownership
   - [IMP] Fatal error: "Security" how to run mysqld as root!
   - [TASK] Adjust for TYPO3 6.2
 

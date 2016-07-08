@@ -18,6 +18,8 @@ app:
     - redis
     - elasticsearch
     - couchdb
+  environment:
+    - HOST_USER_ID
 
 # Passive data container which only provides a shared filesystem for the other containers
 data:
