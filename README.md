@@ -12,17 +12,22 @@ Contributions and feedback are very welcome.
 
 ## Install docker
 
-    https://docs.docker.com/installation/ (tested with docker v1.9)
+    https://docs.docker.com/installation/ (tested with docker v1.9 - v1.12)
 
 ## Install docker-compose
 
 We use docker-compose to do all the automatic configuration:
 
-    http://docs.docker.com/compose/install/ (tested with docker-compose v1.5)
+    http://docs.docker.com/compose/install/ (tested with docker-compose v1.5 - v1.6)
 
 The repository contains a Dockerfile which will automatically be built in the
 [docker hub](https://registry.hub.docker.com/u/visay/dockertypo3/) after each change
 and used by docker-compose to build the necessary containers.
+
+## On a Mac or Windows
+
+It has been tested working with docker for Mac but not yet with docker for Windows.
+Feel free to try out and let us know if you cannot wait.
 
 ## Install dockertypo3 into your distribution
 
@@ -31,7 +36,7 @@ Add `visay/dockertypo3` as dev dependency in your composer, using the latest sta
 *Example*:
 
 ```
-composer require --dev visay/dockertypo3 dev-master
+composer require --dev visay/dockertypo3 2.1.*
 ```
 
 *Note*:
@@ -48,9 +53,11 @@ sudo service nginx stop
 
     vendor/bin/dockertypo3 up -d
 
-The command will echo the url with which you can access your project. Add the hostname then to your `/etc/hosts`
-and set the ip to your docker host (default for linux is 0.0.0.0). You can also use any subdomain with *.hostname and
-it will point to the same server. What you need to do is to add exact subdomain name to your `/etc/hosts`.
+The command will echo the url with which you can access your project. Since version `2.1`, the hostname is pointed automatically
+to the `web` container so you can start browsing right away without adding entry to `/etc/hosts` like before.
+
+You can also use any subdomain with `*.hostname` but you need to point each of them manually in your `/etc/hosts`, e.g: `0.0.0.0 test.hostname`.
+
 The parameter `-d` will keep it running in the background until you run:
 
     vendor/bin/dockertypo3 stop
@@ -149,9 +156,9 @@ host machine through `3307` port.
 
 From your host machine, you can access couchdb from web interface or command line:
 
-__Web__: [http://0.0.0.0:5984/_utils/](http://0.0.0.0:5984/_utils/)
+__Web__: [http://hostname-couchdb:5984/_utils/](http://hostname-couchdb:5984/_utils/) -> replace `hostname` with project name
 
-__Cli__: `curl -X GET http://0.0.0.0:5984/_all_dbs`
+__Cli__: `curl -X GET http://hostname-couchdb:5984/_all_dbs`
 
 From inside your `app` container, you can also access couchdb through the command line:
 
