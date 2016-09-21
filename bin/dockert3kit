@@ -4,7 +4,7 @@
 command -v docker >/dev/null 2>&1 || { echo "docker is not installed. Aborting." >&2; exit 1; }
 command -v docker-compose >/dev/null 2>&1 || { echo "docker-compose is not installed. Aborting." >&2; exit 1; }
 
-package_dir="vendor/visay/dockertypo3"
+package_dir="vendor/lauri/dockert3kit"
 config_dir="${package_dir}/config"
 export HOST_USER_ID="${UID}"
 
@@ -55,7 +55,7 @@ echo "### Project name    : ${projectname}"
 echo "### TYPO3_CONTEXT   : ${DOCKER_TYPO3_CONTEXT}"
 echo "### Testing context : ${DOCKER_TYPO3_CONTEXT}/Testing"
 echo "###"
-echo "### DockerTYPO3 is now running action '${action}'"
+echo "### DockerT3kit is now running action '${action}'"
 echo "####"
 
 # Wrap docker-compose command to use config from package, passing TYPO3 context on run action
