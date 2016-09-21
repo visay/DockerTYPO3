@@ -1,19 +1,19 @@
 {
-  "name": "visay/dockertypo3",
-  "description": "Docker Compose structure to quickly startup TYPO3 CMS projects",
+  "name": "lauri/dockert3kit",
+  "description": "Docker Compose structure to quickly startup t3kit based TYPO3 CMS projects",
   "license": "MIT",
   "require": {
     "typo3/cms": "*"
   },
   "authors": [
     {
-      "name": "Visay Keo",
-      "email": "visay.keo@typo3.org",
-      "homepage": "http://www.visay.info",
+      "name": "Lauri Saarni",
+      "email": "lauri@web-essentials.asia",
+      "homepage": "http://www.web-essentials.asia",
       "role": "Developer"
     }
   ],
   "bin": [
-    "bin/dockertypo3"
+    "bin/dockert3kit"
   ]
 }
