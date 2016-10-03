@@ -1,5 +1,7 @@
 # DockerTYPO3 helps you developing TYPO3 CMS projects
 
+[![](https://images.microbadger.com/badges/image/visay/dockertypo3.svg)](https://microbadger.com/images/visay/dockertypo3 "Get your own image badge on microbadger.com")
+
 DockerTYPO3 creates the necessary Docker containers (webserver, database, php, mail, redis, elasticsearch, couchdb)
 to run your TYPO3 CMS project. The package provides a wrapper script in `vendor/bin/dockertypo3`
 which simplifies the handling of docker and does all the configuration necessary.
