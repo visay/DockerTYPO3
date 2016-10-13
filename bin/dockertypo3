@@ -25,8 +25,14 @@ DOCKER_TYPO3_SERVERNAME=${projectname}
 DOCKER_TYPO3_CONTEXT=${TYPO3_CONTEXT:=Development}
 
 # Replace the markers in the merge config file
-sed -e "s/DOCKER_TYPO3_SERVERNAME/${DOCKER_TYPO3_SERVERNAME} *.${DOCKER_TYPO3_SERVERNAME}/g;s/DOCKER_TYPO3_CONTEXT/${DOCKER_TYPO3_CONTEXT}/g" ${config_dir}/web/nginx_default.conf > ${config_dir}/web/.nginx_default_merged.conf
-sed -e "s/DOCKER_TYPO3_SERVERNAME/test.${DOCKER_TYPO3_SERVERNAME}/g;s/DOCKER_TYPO3_CONTEXT/${DOCKER_TYPO3_CONTEXT}\/Testing/g" ${config_dir}/web/nginx_default.conf > ${config_dir}/web/.nginx_default_test_merged.conf
+sed -e "s~DOCKER_TYPO3_SERVERNAME~${DOCKER_TYPO3_SERVERNAME} *.${DOCKER_TYPO3_SERVERNAME}~g;s~DOCKER_TYPO3_CONTEXT~${DOCKER_TYPO3_CONTEXT}~g" ${config_dir}/web/nginx_default.conf > ${config_dir}/web/.nginx_default_merged.conf
+sed -e "s~DOCKER_TYPO3_SERVERNAME~test.${DOCKER_TYPO3_SERVERNAME}~g;s~DOCKER_TYPO3_CONTEXT~${DOCKER_TYPO3_CONTEXT}/Testing~g" ${config_dir}/web/nginx_default.conf > ${config_dir}/web/.nginx_default_test_merged.conf
+
+# Adjust document root path case sensitivity
+if [[ -d "web" && ! -d "Web" ]]; then
+	sed -i -e "s~/var/www/Web/~/var/www/web/~g" ${config_dir}/web/.nginx_default_merged.conf
+	sed -i -e "s~/var/www/Web/~/var/www/web/~g" ${config_dir}/web/.nginx_default_test_merged.conf
+fi
 
 # Make sure all entrypoint scripts are executable
 chmod +x ${package_dir}/scripts/entrypoint/*.sh
