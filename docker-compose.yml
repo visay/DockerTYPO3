@@ -2,7 +2,7 @@
 app:
   # For development of the image comment out the 'image' line and replace with the next line
   #build: .
-  image: visay/dockertypo3:7.6.0
+  image: visay/dockertypo3:7.6.1
   volumes_from:
     - data
   volumes:
