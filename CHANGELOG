@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+8.7.0
+-----
+
+  - [FEATURE] Upgrade Ubuntu image and PHP version
+
 7.6.2
 -----
 
