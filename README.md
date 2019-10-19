@@ -3,7 +3,7 @@
 [![](https://images.microbadger.com/badges/image/visay/dockertypo3.svg)](https://microbadger.com/images/visay/dockertypo3 "Get your own image badge on microbadger.com")
 
 DockerTYPO3 creates the necessary Docker containers (webserver, database, php, mail, redis, elasticsearch, couchdb)
-to run your TYPO3 CMS project. The package provides a wrapper script in `vendor/bin/dockertypo3`
+to run your TYPO3 CMS project. The package provides a wrapper script in `bin/dockertypo3`
 which simplifies the handling of docker and does all the configuration necessary.
 
 We created this package to make development on TYPO3 CMS projects easier and
@@ -38,7 +38,7 @@ Add `visay/dockertypo3` as dev dependency in your composer, using the latest sta
 *Example*:
 
 ```
-composer require --dev visay/dockertypo3 2.1.*
+composer require --dev visay/dockertypo3 dev-master
 ```
 
 *Note*:
@@ -53,14 +53,14 @@ sudo service nginx stop
 
 ## Run dockertypo3
 
-    vendor/bin/dockertypo3 up -d
+    bin/dockertypo3 up -d
 
 The command will echo the url with which you can access your project. Add the hostname then to your `/etc/hosts`
 and set the ip to your docker host (default for linux is 0.0.0.0). You can also use any subdomain with *.hostname and
 it will point to the same server. What you need to do is to add exact subdomain name to your `/etc/hosts`.
 The parameter `-d` will keep it running in the background until you run:
 
-    vendor/bin/dockertypo3 stop
+    bin/dockertypo3 stop
 
 The default database configuration for your `AdditionalConfiguration.php` is:
 
@@ -81,7 +81,7 @@ would be `test.hostname` and this hostname should be added to your `/etc/hosts` 
 
 ## Check the status
 
-    vendor/bin/dockertypo3 ps
+    bin/dockertypo3 ps
 
 This will show the running containers. The `data` container can be inactive to do it's work.
 
@@ -89,15 +89,15 @@ This will show the running containers. The `data` container can be inactive to d
 
 ## Using different TYPO3_CONTEXT
 
-    TYPO3_CONTEXT=Production vendor/bin/dockertypo3 up -d
+    TYPO3_CONTEXT=Production bin/dockertypo3 up -d
 
 DockerTYPO3 also setup a sub-context for testing depends on the current context you are running. In the above example,
-it would be `Production/Testing`. Anyway, you can only use the parent context with the `vendor/bin/dockertypo3` command. So when
+it would be `Production/Testing`. Anyway, you can only use the parent context with the `bin/dockertypo3` command. So when
 there is a need to execute command for the testing context, you need to first get into `app` container and then call the
 command prefixed by the context variable.
 
-    TYPO3_CONTEXT=Production vendor/bin/dockertypo3 up -d
-    vendor/bin/dockertypo3 run app /bin/bash
+    TYPO3_CONTEXT=Production bin/dockertypo3 up -d
+    bin/dockertypo3 run app /bin/bash
     TYPO3_CONTEXT=Production/Testing <YOUR COMMAND>
 
 ## Configure remote debugging from your host to container
@@ -116,7 +116,7 @@ the port accordingly. If you are using PHPStorm, this link may be useful for you
 
 ## Running a shell in one of the service containers
 
-    vendor/bin/dockertypo3 run SERVICE /bin/bash
+    bin/dockertypo3 run SERVICE /bin/bash
 
 SERVICE can currently be `app`, `web`, `data`, `db`, `redis`, `elasticsearch` or `couchdb`.
 
@@ -138,12 +138,12 @@ You need to define the default test suite url in your `behat.yml` to use `http:/
 run the behat tests without having to connect external selenium server
 
 ```
-vendor/bin/dockertypo3 run app vendor/bin/behat -c Path/To/Your/Package/Tests/Behaviour/behat.yml
+bin/dockertypo3 run app bin/behat -c Path/To/Your/Package/Tests/Behaviour/behat.yml
 ```
 
 ## Access database inside container from docker host
 
-While you can easily login to shell of the `db` container with `vendor/bin/dockertypo3 run db /bin/bash`
+While you can easily login to shell of the `db` container with `bin/dockertypo3 run db /bin/bash`
 and execute your mysql commands, there are some cases that you want to run mysql commands directly
 from your host without having to login to the `db` container first. One of the best use cases,
 for example, is to access the databases inside the container from MySQL Workbench tool.
@@ -163,20 +163,20 @@ __Cli__: `curl -X GET http://0.0.0.0:5984/_all_dbs`
 From inside your `app` container, you can also access couchdb through the command line:
 
 ```
-vendor/bin/dockertypo3 run app /bin/bash
+bin/dockertypo3 run app /bin/bash
 curl -X GET http://couchdb:5984/_all_dbs
 ```
 
 ## Attach to a running service
 
-Run `vendor/bin/dockertypo3 ps` and copy the container's name that you want to attach to.
+Run `bin/dockertypo3 ps` and copy the container's name that you want to attach to.
 
 Run `docker exec -it <containername> /bin/bash` with the name you just copied.
 With this you can work in a running container instead of creating a new one.
 
 ## Check open ports in a container
 
-    vendor/bin/dockertypo3 run SERVICE netstat --listen
+    bin/dockertypo3 run SERVICE netstat --listen
 
 # Further reading
 
